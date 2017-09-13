@@ -14,10 +14,13 @@ public class PalindromePartitioning {
 
 	}
 	
-	// ¿ªÊ¼Ë¼Â·»¹ÊÇÃ»ÓĞ¡£¡£¡£
-	// http://blog.csdn.net/doc_sgl/article/details/13418125 Ë«DPÎÊÌâ
-	// ÕâÌâ»¹ÊÇÍ¦²»ºÃ×öµÄ£¬±ß½çºÜÈİÒ×Åª´í£¬
-	// ÅĞ¶ÏÊÇ·ñÊÇ»ØÎÄµÄdp×ªÒÆ·½³Ì£º dp[i][j] = s.charAt(i) == s.charAt(j) && (j-i < 2 || dp[i+1][j-1]);
+	// å¼€å§‹æ€è·¯è¿˜æ˜¯æ²¡æœ‰ã€‚ã€‚ã€‚
+	// http://blog.csdn.net/doc_sgl/article/details/13418125 åŒDPé—®é¢˜
+	// è¿™é¢˜è¿˜æ˜¯æŒºä¸å¥½åšçš„ï¼Œè¾¹ç•Œå¾ˆå®¹æ˜“å¼„é”™ï¼Œ
+	// åˆ¤æ–­æ˜¯å¦æ˜¯å›æ–‡çš„dpè½¬ç§»æ–¹ç¨‹ï¼š dp[i][j] = s.charAt(i) == s.charAt(j) && (j-i < 2 || dp[i+1][j-1]);
+	// æ ¸å¿ƒæ€æƒ³æ˜¯ 
+	// dp[i] = min(dp[j]+1, dp[i]) (0<j<i) && dp[j][i] = true;
+	// dp[j][i] = (dp[j+1][i-1] || i-j<2) && s[j] == [j] ï¼›
 	public int minCut(String s) {
 		if (s == null || s == ""){
 			return 0;
@@ -40,7 +43,7 @@ public class PalindromePartitioning {
 		return dp[0] - 1;
     }
 	
-	// Ò»´ÎAC
+	// ä¸€æ¬¡AC
 	public ArrayList<ArrayList<String>> partition(String s) {
 		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
 		if (s == null || s.equals("")){
